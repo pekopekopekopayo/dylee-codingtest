@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :black_lists, only: %i[index create destroy]
+  
+  resources :students, only: %i[index create destroy] do
+    resources :devices, only: %i[index create destroy]
+  end
+  
+  resources :teachers, only: %i[index create destroy] do 
+    resources :devices, only: %i[index create destroy]
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resource :lessons, only: %i[index create destroy]
+
+  # task1: wecome_page페이지
+  get '/', to: 'main#landing_page'
 end

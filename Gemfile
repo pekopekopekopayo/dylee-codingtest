@@ -11,9 +11,17 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
+
+gem 'active_model_serializers'
 gem "pg"
+gem "redis"
+gem "sidekiq"
+gem "google-api-ruby-client"
+gem "fcm"
+
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem "pry"
   gem "spring"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
