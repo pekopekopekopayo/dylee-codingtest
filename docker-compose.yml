@@ -11,7 +11,8 @@ services:
     environment:
       RAILS_ENV: development
       DATABASE_URL: postgres://root:root@db/dev
-    command: tail -f /dev/null
+    command: puma -C config/puma.rb
+    # command: tail -f /dev/null
 
   sidekiq:
     build: .
@@ -22,7 +23,6 @@ services:
       - redis
     command: bundle exec sidekiq
 
-  # PostgreSQL 서비스
   db:
     image: postgres:latest
     volumes:
