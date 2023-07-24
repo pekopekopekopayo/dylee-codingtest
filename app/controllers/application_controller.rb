@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   def block_ips
     black_list_ips = Rails.cache.fetch('black_list_ips') || update_rails_cache
 
-    clent_ip = IPAddr.new(request.remote_ip)
+    client_ip = IPAddr.new(request.remote_ip)
 
-    render plain: '귀하의 IP는 차단 되어있습니다.', status: :forbidden if black_list_ips.include?(clent_ip)
+    render plain: '귀하의 IP는 차단 되어있습니다.', status: :forbidden if black_list_ips.include?(client_ip)
   end
 
   private 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def unprocessable_entity(exception)
-    render json: { error: exception.H.errors.full_messages }, status: :unprocessable_entity
+    render json: { error: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
 
   def update_rails_cache
