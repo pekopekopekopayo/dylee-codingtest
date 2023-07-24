@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class StudentsController < ApplicationController
   def index
-    students = Student.all 
-    
+    students = Student.all
+
     render json: students
   end
-  
+
   def create
     student = StudentService::Create.call(create_params)
 

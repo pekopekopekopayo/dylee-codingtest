@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Teacher < ApplicationRecord
   has_many :devices, as: :target
   has_many :students, through: :teachers

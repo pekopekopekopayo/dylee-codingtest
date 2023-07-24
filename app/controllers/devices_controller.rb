@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DevicesController < ApplicationController
   before_action :find_user
 
@@ -17,7 +19,7 @@ class DevicesController < ApplicationController
     head :ok
   end
 
-  private 
+  private
 
   def create_params
     params.require(:device).permit(:os, :token)

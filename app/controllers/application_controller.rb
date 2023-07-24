@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing, with: :bad_request
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
 
-  private 
+  private
 
   def block_ips
     black_list_ips = Rails.cache.fetch('black_list_ips') || update_rails_cache
@@ -15,8 +17,6 @@ class ApplicationController < ActionController::Base
 
     render plain: '귀하의 IP는 차단 되어있습니다.', status: :forbidden if black_list_ips.include?(client_ip)
   end
-
-  private 
 
   def bad_request(exception)
     render json: { error: exception.message }, status: :bad_request

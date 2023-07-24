@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TeachersController < ApplicationController
   def index
     teachers = Teacher.all
@@ -12,7 +14,7 @@ class TeachersController < ApplicationController
   end
 
   def destroy
-    teacher = Teacher.find(params[:id])
+    Teacher.find(params[:id])
 
     head :ok
   end

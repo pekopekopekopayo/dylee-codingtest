@@ -1,0 +1,22 @@
+# Include the following file patterns for analysis
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+
+# Disable the Style/Documentation rule specifically
+Style/Documentation:
+  Enabled: false
+
+# Set the maximum allowed method length to 20 lines
+Metrics/MethodLength:
+  Max: 20
+
+# Exclude specific files from BlockLength metric check
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/environments/**'

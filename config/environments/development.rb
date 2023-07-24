@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -19,10 +21,10 @@ Rails.application.configure do
 
   config.action_controller.perform_caching = true
   config.action_controller.enable_fragment_cache_logging = true
-  config.active_record.logger = Logger.new(STDOUT)
+  config.active_record.logger = Logger.new($stdout)
   config.cache_store = :memory_store
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=#{2.days.to_i}"
+    'Cache-Control' => "public, max-age=#{2.days.to_i}"
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
@@ -62,11 +64,11 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-   address:              'smtp.gmail.com',
-   domain:               'gmail.com',
-   port:                  587,
-   user_name:            ENV['MAILER_EMAIL'],
-   password:             ENV['MAILER_PASSWORD'],
-   authentication: :login
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: ENV['MAILER_EMAIL'],
+    password: ENV['MAILER_PASSWORD'],
+    authentication: :login
   }
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AppNotification
   def send_notification(body)
     # url = "https://fcm.googleapis.com/v1/projects/#{ENV["FCM_PROJECT_ID"]}/messages:send"

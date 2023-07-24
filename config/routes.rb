@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :black_lists, only: %i[index create destroy]
-  
+
   resources :students, only: %i[index create destroy] do
     resources :devices, only: %i[index create destroy]
   end
-  
-  resources :teachers, only: %i[index create destroy] do 
+
+  resources :teachers, only: %i[index create destroy] do
     resources :devices, only: %i[index create destroy]
   end
 

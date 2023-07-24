@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class BlackListsController < ApplicationController
   after_action :update_rails_cache, only: %i[create destroy]
+
   def index
     black_lists = BlackList.all
-    
-    render json: black_lists 
+
+    render json: black_lists
   end
 
   def create
@@ -11,9 +14,9 @@ class BlackListsController < ApplicationController
 
     render json: black_list, status: :created
   end
-  
+
   def destroy
-    black_list = BlackList.find(params[:id]) 
+    black_list = BlackList.find(params[:id])
     black_list.destroy
 
     head :ok
