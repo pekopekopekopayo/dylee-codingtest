@@ -8,7 +8,7 @@ class LessonPusherWorker
     teacher = lesson.teacher
 
     send_student_notification(student, teacher)
-    send_teacher_notification(studnet, teacher)
+    send_teacher_notification(student, teacher)
   end
 
   private
