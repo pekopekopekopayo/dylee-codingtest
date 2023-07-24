@@ -22,6 +22,7 @@ gem "fcm"
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'rubocop'
   gem "pry"
   gem "spring"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
