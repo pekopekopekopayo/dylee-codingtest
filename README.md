@@ -75,3 +75,32 @@
     - Lesson의 Row가 만들어지면 수업에 대한 유효성 검사는 끝났으므로 Push메세지 송신
     - 학생에게만 메일을 발신을 하는 것은 무언가 위화감이 느껴졌으므로 선생에게도 메일을 보내는형식으로 변경(임의)
     - 앱이 없으므로 트리거 코드만 주석으로 하여 작성
+
+## Route
+                                  Prefix Verb   URI Pattern                                                                                       Controller#Action  
+                             black_lists GET    /black_lists(.:format)                                                                            black_lists#index  
+                                         POST   /black_lists(.:format)                                                                            black_lists#create 
+                              black_list DELETE /black_lists/:id(.:format)                                                                        black_lists#destroy
+                         student_devices GET    /students/:student_id/devices(.:format)                                                           devices#index      
+                                         POST   /students/:student_id/devices(.:format)                                                           devices#create     
+                          student_device DELETE /students/:student_id/devices/:id(.:format)                                                       devices#destroy    
+                                students GET    /students(.:format)                                                                               students#index     
+                                         POST   /students(.:format)                                                                               students#create    
+                                 student DELETE /students/:id(.:format)                                                                           students#destroy   
+                         teacher_devices GET    /teachers/:teacher_id/devices(.:format)                                                           devices#index      
+                                         POST   /teachers/:teacher_id/devices(.:format)                                                           devices#create     
+                          teacher_device DELETE /teachers/:teacher_id/devices/:id(.:format)                                                       devices#destroy    
+                                teachers GET    /teachers(.:format)                                                                               teachers#index     
+                                         POST   /teachers(.:format)                                                                               teachers#create    
+                                 teacher DELETE /teachers/:id(.:format)                                                                           teachers#destroy   
+                                 lessons DELETE /lessons(.:format)                                                                                lessons#destroy    
+                                         POST   /lessons(.:format)                                                                                lessons#create
+                                         GET    /                                                                                                 main#landing_page
+## 비고
+
+  - Windows환경이기 때문에 혹여나 Mac에서 실행이 되지 않을 수 있으므로 docker를 사용하였습니다.
+
+  - Student와 Teacher을 User이라는 모델로 관리하고 ***STI형식***으로 사용하면 엄청 코드가 깔끔해 질 것 같았습니다. Student, Teacher을 STI형식으로 하면 모델은 생성이 되나 테이블이 생성이 되지 않아 혹시나 과제에 대한 요건사항을 달성되지 못하는 것이라고 생각하기에 추가 하지 않았습니다.   
+
+  - 요건이외 제가 생각했던 로직을 조금 추가하였습니다.
+  재미있는 과제였었던 것 같습니다.
