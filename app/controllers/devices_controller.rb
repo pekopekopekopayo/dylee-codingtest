@@ -26,6 +26,6 @@ class DevicesController < ApplicationController
   end
 
   def find_user
-    @user = Student.find(params[:student_id]) || @user = Teacher.find(params[:teacher_id])
+    @user = params[:student_id].present? ? Student.find(params[:student_id]) : Teacher.find(params[:teacher_id])
   end
 end

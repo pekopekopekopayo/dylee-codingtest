@@ -29,5 +29,7 @@ class ApplicationController < ActionController::Base
   def update_rails_cache
     black_list_ips = BlackList.all.pluck(:ip_address)
     Rails.cache.write('black_list_ips', black_list_ips)
+
+    black_list_ips
   end
 end
