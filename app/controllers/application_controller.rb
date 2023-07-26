@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   private
 
   def block_ips
-    black_list_ips = Rails.cache.fetch('black_list_ips') || update_rails_cache
+    black_list_ips = Rails.cache.fetch('black_list_ips') || RailsCacheService::BlackListService::Update.call
 
     client_ip = IPAddr.new(request.remote_ip)
 
@@ -24,12 +24,5 @@ class ApplicationController < ActionController::Base
 
   def unprocessable_entity(exception)
     render json: { error: exception.record.errors.full_messages }, status: :unprocessable_entity
-  end
-
-  def update_rails_cache
-    black_list_ips = BlackList.all.pluck(:ip_address)
-    Rails.cache.write('black_list_ips', black_list_ips)
-
-    black_list_ips
   end
 end

@@ -5,6 +5,7 @@ class MainController < ApplicationController
   skip_before_action :block_ips, only: :landing_page
 
   def landing_page
+    pp request.remote_ip
     render plain: 'Welcome Page', status: :ok
   end
 end

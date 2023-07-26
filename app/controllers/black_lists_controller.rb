@@ -11,13 +11,15 @@ class BlackListsController < ApplicationController
 
   def create
     black_list = BlackList.create!(create_params)
+    RailsCacheService::BlackListService::Update.call
 
     render json: black_list, status: :created
   end
 
   def destroy
-    black_list = BlackList.find(params[:id])
+    black_list = BlackList.find(params[:id]).
     black_list.destroy
+    RailsCacheService::BlackListService::Update.call
 
     head :ok
   end
