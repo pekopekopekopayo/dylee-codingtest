@@ -14,8 +14,9 @@ class DevicesController < ApplicationController
   end
 
   def destroy
-    @user.devices.find(params[:id])
+    device = @user.devices.find(params[:id])
 
+    device.destroy
     head :ok
   end
 
