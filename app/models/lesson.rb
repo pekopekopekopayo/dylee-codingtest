@@ -18,7 +18,7 @@ class Lesson < ApplicationRecord
   private
 
   def lesson_time_validate
-    errors.add(:base, '수업시간을 과거로 설정할수없습니다.') if Time.zone.now > started_at
+    errors.add(:base, '수업시간을 과거로 설정할수없습니다.') if started_at.past?
     errors.add(:base, '수업시간이 유효하지 않습니다.') if started_at >= ended_at
   end
 
