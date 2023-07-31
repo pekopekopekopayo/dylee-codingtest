@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class BlackListsController < ApplicationController
-  after_action :update_rails_cache, only: %i[create destroy]
-
   def index
     black_lists = BlackList.all
 
@@ -17,7 +15,7 @@ class BlackListsController < ApplicationController
   end
 
   def destroy
-    black_list = BlackList.find(params[:id]).
+    black_list = BlackList.find(params[:id])
     black_list.destroy
     RailsCacheService::BlackListService::Update.call
 
